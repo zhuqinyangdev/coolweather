@@ -3,8 +3,10 @@ package com.example.coolweather;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -101,6 +103,7 @@ public class ChooseAreaFragment extends Fragment {
                     if (getActivity() instanceof MainActivity) {
                         Intent intent = new Intent(getActivity(), WeatherActivity.class);
                         intent.putExtra("weather_id", weatherId);
+                        Log.d("ChooseAreaFragment","在这里mainActivity");
                         startActivity(intent);
                         getActivity().finish();
                     }else if (getActivity() instanceof  WeatherActivity){
@@ -108,6 +111,7 @@ public class ChooseAreaFragment extends Fragment {
                         activity.drawerLayout.closeDrawers();
                         activity.swipeRefresh.setRefreshing(true);
                         activity.requestWeather(weatherId);
+                        Log.d("ChooseAreaFragment","在这里weatherActivity");
                     }
                 }
             }
